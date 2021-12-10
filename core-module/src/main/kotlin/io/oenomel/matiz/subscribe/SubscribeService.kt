@@ -1,9 +1,9 @@
 package io.oenomel.matiz.subscribe
 
-import io.oenomel.matiz.article.Article
 import io.oenomel.matiz.article.ArticleRepository
+import io.oenomel.matiz.subscribe.dto.ArticleDTO
+import io.oenomel.matiz.subscribe.dto.convertToArticleDTO
 import org.springframework.stereotype.Service
-import javax.persistence.EntityManager
 
 @Service
 class SubscribeService(
@@ -14,7 +14,8 @@ class SubscribeService(
         this.articleRepository.findAll()
     }
 
-    fun fetchUnreadArticles(serialNumber: String) {
-        this.articleRepository.findUnreadArticle(serialNumber)
+    fun fetchUnreadArticles(serialNumber: String): List<ArticleDTO> {
+        val unreadArticles = this.articleRepository.findUnreadArticle(serialNumber)
+        return unreadArticles.isPresent.let { unreadArticles.get().map { convertToArticleDTO(it) } }
     }
 }

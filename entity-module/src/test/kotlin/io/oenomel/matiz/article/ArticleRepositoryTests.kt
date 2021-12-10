@@ -37,7 +37,7 @@ class ArticleRepositoryTests {
     fun findUnreadArticleTest() {
         val subscriber = this.createSampleData()
         val article = this.articleRepository.findUnreadArticle(subscriber.serialNumber)
-        assertThat(article)
+        assertThat(article.get())
             .hasSize(1)
             .allMatch { it.content == "consumed article" }
     }
