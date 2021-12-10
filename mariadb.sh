@@ -1,0 +1,1 @@
+docker run --name matiz-mysql -it -p 3366:3306 -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=matiz -e MYSQL_USER=matiz -e MYSQL_PASSWORD=matiz mysql:8

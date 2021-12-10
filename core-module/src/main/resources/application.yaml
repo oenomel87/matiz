@@ -1,0 +1,20 @@
+server:
+  port: 9999
+spring:
+  profiles:
+    active: local
+  datasource:
+    url: jdbc:mysql://localhost:3366/matiz?serverTimezone=UTC
+    hikari:
+      jdbc-url: jdbc:mysql://localhost:3366/matiz?serverTimezone=UTC
+      username: matiz
+      password: matiz
+      driver-class-name: com.mysql.jdbc.Driver
+      pool-name: app-hikari-pool
+  jpa:
+    open-in-view: false
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+

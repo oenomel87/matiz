@@ -1,0 +1,4 @@
+rootProject.name = 'matiz'
+
+include 'core-module'
+include 'entity-module'
