@@ -36,8 +36,8 @@ class ArticleRepositoryTests {
     @Test
     fun findUnreadArticleTest() {
         val subscriber = this.createSampleData()
-        val article = this.articleRepository.findUnreadArticle(subscriber.serialNumber)
-        assertThat(article.get())
+        val article = this.articleRepository.findUnreadArticle(subscriber)
+        assertThat(article)
             .hasSize(1)
             .allMatch { it.content == "consumed article" }
     }
@@ -52,10 +52,15 @@ class ArticleRepositoryTests {
         val subjectSubscriber = SubjectSubscriber(subject = sampleSubject, subscriber = sampleSubscriber)
         val sampleSubjectSubscriber = this.subjectSubscriberRepository.save(subjectSubscriber)
 
-        val consumedArticle = Article(content = "consumed article", createdAt = LocalDateTime.now().minusDays(1L), subject = subject)
+        val consumedArticle =
+            Article(content = "consumed article", createdAt = LocalDateTime.now().minusDays(1L), subject = subject)
         val sampleConsumedArticle = this.articleRepository.save(consumedArticle)
 
-        val history = SubscribeHistory(subjectSubscriber = sampleSubjectSubscriber, article = sampleConsumedArticle, createdAt = sampleConsumedArticle.createdAt)
+        val history = SubscribeHistory(
+            subjectSubscriber = sampleSubjectSubscriber,
+            article = sampleConsumedArticle,
+            createdAt = sampleConsumedArticle.createdAt
+        )
         this.subscribeHistoryRepository.save(history)
 
         val article = Article(content = "new article", createdAt = LocalDateTime.now(), subject = subject)

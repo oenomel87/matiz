@@ -10,20 +10,25 @@ import javax.persistence.*
 @Entity
 @Table
 @EntityListeners(value = [AuditingEntityListener::class])
-data class Article (
+class Article (
+    content: String,
+    createdAt: LocalDateTime,
+    subject: Subject,
+    subscribeHistories: List<SubscribeHistory>? = null
+) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null,
+    var id: Long? = null
 
     @Column(columnDefinition = "TEXT")
-    val content: String,
+    var content: String = content
 
     @CreatedDate
-    val createdAt: LocalDateTime,
+    var createdAt: LocalDateTime = createdAt
 
     @ManyToOne
-    var subject: Subject,
+    var subject: Subject = subject
 
     @OneToMany(mappedBy = "article")
-    var subscribeHistories: List<SubscribeHistory>? = null
-)
+    var subscribeHistories: List<SubscribeHistory>? = subscribeHistories
+}

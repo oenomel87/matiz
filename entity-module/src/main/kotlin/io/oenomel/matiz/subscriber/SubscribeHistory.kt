@@ -9,17 +9,21 @@ import javax.persistence.*
 @Entity
 @Table
 @EntityListeners(value = [AuditingEntityListener::class])
-data class SubscribeHistory (
+class SubscribeHistory (
+    subjectSubscriber: SubjectSubscriber,
+    article: Article,
+    createdAt: LocalDateTime
+) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null,
+    var id: Long? = null
 
     @ManyToOne
-    var subjectSubscriber: SubjectSubscriber,
+    var subjectSubscriber: SubjectSubscriber = subjectSubscriber
 
     @ManyToOne
-    var article: Article,
+    var article: Article = article
 
     @CreatedDate
-    val createdAt: LocalDateTime
-)
+    var createdAt: LocalDateTime = createdAt
+}

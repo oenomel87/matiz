@@ -16,7 +16,7 @@ internal class SubscribeServiceTests {
 
     @Test
     fun fetchUnreadArticlesTest() {
-        assertThat(subscribeService.fetchUnreadArticles("1234"))
+        assertThat(subscribeService.fetchUnreadArticles("abc", "1234"))
             .isNotEmpty
     }
 }

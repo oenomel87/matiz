@@ -5,17 +5,21 @@ import javax.persistence.*
 
 @Entity
 @Table
-data class SubjectSubscriber (
+class SubjectSubscriber(
+    subject: Subject,
+    subscriber: Subscriber,
+    subscribeHistories: List<SubscribeHistory>? = null
+) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null,
+    var id: Long? = null
 
     @ManyToOne
-    var subject: Subject,
+    var subject: Subject = subject
 
     @ManyToOne
-    var subscriber: Subscriber,
+    var subscriber: Subscriber = subscriber
 
     @OneToMany(mappedBy = "subjectSubscriber")
-    var subscribeHistories: List<SubscribeHistory>? = null
-)
+    var subscribeHistories: List<SubscribeHistory>? = subscribeHistories
+}

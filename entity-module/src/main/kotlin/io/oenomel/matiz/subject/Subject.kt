@@ -6,18 +6,23 @@ import javax.persistence.*
 
 @Entity
 @Table
-data class Subject (
+class Subject(
+    name: String,
+    active: Boolean,
+    articles: List<Article>? = null,
+    subjectSubscribers: List<SubjectSubscriber>? = null
+) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null,
+    val id: Long? = null
 
-    val name: String,
+    val name: String = name
 
-    val active: Boolean,
-
-    @OneToMany(mappedBy = "subject")
-    var articles: List<Article>? = null,
+    val active: Boolean = active
 
     @OneToMany(mappedBy = "subject")
-    var subjectSubscribers: List<SubjectSubscriber>? = null
-)
+    var articles: List<Article>? = articles
+
+    @OneToMany(mappedBy = "subject")
+    var subjectSubscribers: List<SubjectSubscriber>? = subjectSubscribers
+}

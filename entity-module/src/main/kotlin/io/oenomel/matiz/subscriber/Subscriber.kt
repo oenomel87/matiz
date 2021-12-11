@@ -4,15 +4,19 @@ import javax.persistence.*
 
 @Entity
 @Table
-data class Subscriber (
+class Subscriber (
+    name: String,
+    serialNumber: String,
+    subjectSubscribers: List<SubjectSubscriber>? = null
+) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null,
+    var id: Long? = null
 
-    val name: String,
+    var name: String = name
 
-    val serialNumber: String,
+    var serialNumber: String = serialNumber
 
     @OneToMany(mappedBy = "subscriber")
-    var subjectSubscribers: List<SubjectSubscriber>? = null
-)
+    var subjectSubscribers: List<SubjectSubscriber>? = subjectSubscribers
+}
