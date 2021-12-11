@@ -4,12 +4,15 @@ import javax.persistence.*
 
 @Entity
 @Table
-data class Operator (
+class Operator (
+    username: String,
+    password: String? = null
+) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null,
+    var id: Long? = null
 
-    val username: String,
+    var username: String = username
 
-    val password: String? = null,
-)
+    var password: String? = password
+}
