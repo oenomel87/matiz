@@ -6,7 +6,7 @@ import javax.persistence.*
 @Table
 class Subscriber (
     name: String,
-    serialNumber: String,
+    subscribeKey: String,
     subjectSubscribers: List<SubjectSubscriber>? = null
 ) {
     @Id
@@ -15,7 +15,7 @@ class Subscriber (
 
     var name: String = name
 
-    var serialNumber: String = serialNumber
+    var subscribeKey: String = subscribeKey
 
     @OneToMany(mappedBy = "subscriber")
     var subjectSubscribers: List<SubjectSubscriber>? = subjectSubscribers

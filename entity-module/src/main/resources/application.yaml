@@ -1,6 +1,7 @@
 spring:
-  profiles:
-    active: test
+  config:
+    activate:
+      on-profile: test
   jpa:
     open-in-view: false
     generate-ddl: true

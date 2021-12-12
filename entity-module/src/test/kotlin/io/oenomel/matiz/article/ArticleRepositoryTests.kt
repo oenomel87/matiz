@@ -46,7 +46,7 @@ class ArticleRepositoryTests {
         val subject = Subject(name = "sample", active = true)
         val sampleSubject = this.subjectRepository.save(subject)
 
-        val subscriber = Subscriber(name = "sample", serialNumber = "1234")
+        val subscriber = Subscriber(name = "sample", subscribeKey = "1234")
         val sampleSubscriber = this.subscriberRepository.save(subscriber)
 
         val subjectSubscriber = SubjectSubscriber(subject = sampleSubject, subscriber = sampleSubscriber)

@@ -4,7 +4,7 @@ import io.oenomel.matiz.article.Article
 import java.time.LocalDateTime
 
 data class ArticleDTO (
-    val id: Long?,
+    val id: Long? = null,
 
     var content: String,
 
@@ -12,5 +12,5 @@ data class ArticleDTO (
 )
 
 fun convertToArticleDTO(article: Article): ArticleDTO {
-    return ArticleDTO(id = article.id?.let { null }, content = article.content, createdAt = article.createdAt)
+    return ArticleDTO(id = article.id, content = article.content, createdAt = article.createdAt)
 }
