@@ -24,6 +24,8 @@ internal class SubscribeControllerTests {
     @Autowired
     private lateinit var mockMvc: MockMvc
 
+
+
     @Test
     fun fetchUnreadArticleTest() {
         this.mockMvc.perform(
@@ -33,5 +35,9 @@ internal class SubscribeControllerTests {
         )
             .andDo(print())
             .andExpect(status().isOk)
+    }
+
+    private fun setSample() {
+
     }
 }

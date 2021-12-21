@@ -20,6 +20,6 @@ class SubjectPublisher (
     @ManyToOne
     var publisher: Publisher = publisher
 
-    @OneToMany
+    @OneToMany(mappedBy = "subjectPublisher")
     var publishHistories: List<PublishHistory>? = publishHistories
 }

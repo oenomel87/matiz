@@ -18,6 +18,6 @@ class Publisher (
 
     var publishKey: String = publishKey
 
-    @OneToMany
+    @OneToMany(mappedBy = "publisher")
     var subjectPublishers: List<SubjectPublisher>? = subjectPublishers
 }

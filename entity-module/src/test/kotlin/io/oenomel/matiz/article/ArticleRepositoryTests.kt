@@ -39,7 +39,7 @@ class ArticleRepositoryTests {
         val article = this.articleRepository.findUnreadArticle(subscriber)
         assertThat(article)
             .hasSize(1)
-            .allMatch { it.content == "consumed article" }
+            .allMatch { it.content == "new article" }
     }
 
     fun createSampleData(): Subscriber {

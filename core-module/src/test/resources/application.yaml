@@ -3,12 +3,23 @@ spring:
     activate:
       on-profile: test
   jpa:
-    open-in-view: false
-    generate-ddl: true
-    show-sql: true
     hibernate:
       ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      use-new-id-generator-mappings: false
     properties:
       hibernate:
         format_sql: true
         show_sql: true
+        dialect: org.hibernate.dialect.H2Dialect
+    show-sql: true
+  datasource:
+    hikari:
+      driver-class-name: org.h2.Driver
+      pool-name: app-hikari-pool
+      register-mbeans: false
+      connection-test-query: SELECT 1
+      username: sa
+      password: password
+      jdbc-url: jdbc:h2:mem:matiz;MODE=MySQL

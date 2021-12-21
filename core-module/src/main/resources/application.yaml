@@ -5,11 +5,11 @@ spring:
     activate:
       on-profile: local
   datasource:
-    url: jdbc:mysql://localhost:3366/matiz?serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/matiz?serverTimezone=UTC
     hikari:
-      jdbc-url: jdbc:mysql://localhost:3366/matiz?serverTimezone=UTC
-      username: matiz
-      password: matiz
+      jdbc-url: jdbc:mysql://localhost:3306/matiz?serverTimezone=UTC
+      username: root
+      password: l1720pq
       driver-class-name: com.mysql.jdbc.Driver
       pool-name: app-hikari-pool
   jpa:
@@ -18,4 +18,8 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
 
